@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <Dictionary defaultKeyword="cat" />
+        <Dictionary defaultKeyword="Book" />
         <footer>
           This project was coded by{" "}
           <a

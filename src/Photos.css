@@ -1,0 +1,14 @@
+.Photos {
+  padding: 20px 20px 0 20px;
+}
+
+.Photos img {
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.img-fluid {
+  padding: 20px 20px 0 20px;
+  max-width: 100%;
+  height: auto;
+}

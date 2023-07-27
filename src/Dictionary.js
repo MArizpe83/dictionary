@@ -1,51 +1,71 @@
-import "./Dictionary.css";
 import React, { useState } from "react";
 import axios from "axios";
-import Results from "./Results";
+import Result from "./Result";
+import Photos from "./Photos";
+import "./Dictionary.css";
 
 export default function Dictionary(props) {
   const [keyword, setKeyword] = useState(props.defaultKeyword);
-  const [results, setResults] = useState(null);
   const [loaded, setLoaded] = useState(false);
+  const [definition, setDefinition] = useState(null);
+  const [photos, setPhotos] = useState([]);
+
+  function handleImages(response) {
+    setPhotos(response.data.photos);
+  }
 
   function handleResponse(response) {
-    setResults(response.data);
-  }
-
-  function Search() {
+    setDefinition(response.data);
     let apiKey = "a58b4a93f73ef41f9465t00aa0of0a64";
-    let apiUrl = `https://api.shecodes.io/dictionary/v1/define?word=${keyword}&key=${apiKey}`;
-    axios.get(apiUrl).then(handleResponse);
-  }
-  function handleSubmit(event) {
-    event.preventDefault();
-    Search();
-  }
-  function handleKeyword(event) {
-    setKeyword(event.target.value);
+    let apiUrl = `https://api.shecodes.io/images/v1/search?query=${response.data.word}&key=${apiKey}`;
+    axios
+      .get(apiUrl, { headers: { Authorization: `Bearer ${apiKey}` } })
+      .then(handleImages);
   }
 
   function load() {
     setLoaded(true);
-    Search();
+    search();
   }
+
+  function search() {
+    let apiKey = "a58b4a93f73ef41f9465t00aa0of0a64";
+    let apiUrl = `https://api.shecodes.io/dictionary/v1/define?word=${keyword}&key=${apiKey}`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleKeywordChange(event) {
+    setKeyword(event.target.value);
+  }
+
   if (loaded) {
     return (
       <div className="Dictionary">
-        <h1>What do you want to Discover Today?</h1>
-        <form className="dictionary-form" onSubmit={handleSubmit}>
-          <input
-            type="search"
-            placeholder="Search For Any Word"
-            className="shadow"
-            onChange={handleKeyword}
-          />
-        </form>{" "}
-        <Results results={results} />
+        <section>
+          <form onSubmit={handleSubmit}>
+            <label>What do you need to search today?</label>
+            <input
+              type="search"
+              placeholder="Search for a meaning"
+              defaultValue={props.defaultKeyword}
+              autoFocus={true}
+              className="form-control search-input"
+              onChange={handleKeywordChange}
+            />
+          </form>
+          <small className="hint">i.e. coffee, wine, books, sunset...</small>
+        </section>
+        <Result definition={definition} />
+        <Photos photos={photos} />
       </div>
     );
   } else {
     load();
-    return "Loading";
+    return "Loading!";
   }
 }

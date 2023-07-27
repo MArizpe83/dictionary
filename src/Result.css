@@ -5,3 +5,13 @@
   line-height: 43px;
   color: #000000;
 }
+
+@media (max-width: 500px) {
+  .Results h2 {
+    font-size: 24px;
+  }
+}
+
+.Results section {
+  padding: 20px;
+}
