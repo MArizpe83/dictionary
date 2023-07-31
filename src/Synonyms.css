@@ -1,16 +1,22 @@
 .Synonyms {
-  margin: 20px 0 0;
+  margin: 10px 0 0;
+  padding: 0;
 }
 
 .Synonyms ul {
+  margin: 0;
   padding: 0;
-  margin: 10px;
-  display: list-item;
 }
 
 .Synonyms li {
-  list-style: none;
-  display: list-item;
-  margin: 20px;
-  font-size: 14px;
+  display: inline-block;
+  padding-right: 15px;
+  font-size: 13px;
+  line-height: 1;
+}
+
+@media (max-width: 500px) {
+  .Synonyms li {
+    font-size: 11px;
+  }
 }
