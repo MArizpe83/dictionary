@@ -1,9 +1,24 @@
 body {
-  background: #fef6bb;
+  background-image: url("images/books.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-size: cover;
+}
+
+.header {
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 a {
-  color: #f58b2b;
+  color: #a5d6e9;
+  text-decoration: none;
+}
+
+footer p {
+  text-align: center;
+  color: #859aaa;
 }
 
 .App {
@@ -15,16 +30,8 @@ a {
   margin: 30px 0;
 }
 
-.App-logo {
-  max-width: 600px;
-  display: block;
-  margin: 0 auto;
-  border-radius: 10px;
-}
-
 .App-footer {
   text-align: center;
-  margin: 30px 0;
 }
 
 @media (max-width: 960px) {
@@ -41,10 +48,6 @@ a {
 @media (max-width: 500px) {
   .App-logo {
     max-width: 200px;
-    margin: 0 auto;
-  }
-  .App {
-    max-width: 300px;
     margin: 0 auto;
   }
 }

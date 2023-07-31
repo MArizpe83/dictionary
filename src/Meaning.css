@@ -7,14 +7,14 @@
 }
 
 .Meaning p {
-  font-size: 14px;
+  font-size: 20px;
   line-height: 17px;
-  color: #000000;
+  color: #302f33;
   margin: 20px 0 10px;
 }
 
 .Meaning em {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 15px;
   color: #666666;
 }
